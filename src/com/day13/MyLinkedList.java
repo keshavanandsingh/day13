@@ -65,6 +65,13 @@ public class MyLinkedList<K> {
 		return null;
 	}
 
+	// Overloaded insert method to insert element using keys
+	public void insert(K prevKey, K newKey) {
+		INode<K> prevNode = search(prevKey);
+		MyNode<K> newNode = new MyNode<>(newKey);
+		insert(prevNode, newNode);
+	}
+
 	public void print() {
 		StringBuffer myNodes = new StringBuffer();
 		INode<K> tempNode = head;
@@ -77,5 +84,4 @@ public class MyLinkedList<K> {
 		myNodes.append(tempNode.getKey());
 		System.out.println(myNodes);
 	}
-
 }
