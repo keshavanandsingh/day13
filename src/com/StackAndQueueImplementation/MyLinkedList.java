@@ -1,6 +1,5 @@
 package com.StackAndQueueImplementation;
 
-
 class MyLinkedList<K> {
 	private AllNode head;
 	private AllNode tail;
@@ -36,19 +35,19 @@ class MyLinkedList<K> {
 			this.head = newNode;
 		} else {
 			AllNode tempNode = head;
-			while (tempNode.getNext() != null && (((Comparable<K>) tempNode.getNext().getKey()).compareTo((K) newNode.getKey())) < 0) {
+			while (tempNode.getNext() != null
+					&& (((Comparable<K>) tempNode.getNext().getKey()).compareTo((K) newNode.getKey())) < 0) {
 				tempNode = tempNode.getNext();
 			}
-			if(tempNode.getNext() == null) {
-				AllNode myNode=search(tempNode.getKey());
+			if (tempNode.getNext() == null) {
+				AllNode myNode = search(tempNode.getKey());
 				myNode.setNext(newNode);
-				this.tail=newNode;
-			}
-			else {
+				this.tail = newNode;
+			} else {
 				newNode.setNext(tempNode.getNext());
-				AllNode myNode=search(tempNode.getKey());
+				AllNode myNode = search(tempNode.getKey());
 				myNode.setNext(newNode);
-			}				
+			}
 		}
 	}
 
@@ -82,14 +81,14 @@ class MyLinkedList<K> {
 		newNode.setNext(tempNode);
 	}
 
-	public AllNode deleteFirst() {
+	public AllNode deleteTop() {
 		AllNode tempNode = this.head;
 		this.head = head.getNext();
 		System.out.println("Deleted element is :" + tempNode.getKey());
 		return tempNode;
 	}
 
-	public AllNode deleteLast() {
+	public AllNode deleteBottom() {
 		AllNode tempNode = head;
 		while (!tempNode.getNext().equals(tail)) {
 			tempNode = tempNode.getNext();
@@ -148,8 +147,6 @@ class MyLinkedList<K> {
 			tempNode = tempNode.getNext();
 		}
 		return size;
-	}
-
 	}
 
 }
