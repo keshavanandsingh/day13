@@ -113,6 +113,7 @@ class MyLinkedListTest {
 		assertEquals((Integer) 40, myLinkedList.head.getNext().getNext().getKey());
 	}
 
+	@Ignore
 	@Test
 	public void given4NumbersWhenDeletingNodeUsingKeyInBetweenShouldPassLinkedListResult() {
 		MyNode<Integer> myFirstNode = new MyNode<>(56);
@@ -129,7 +130,8 @@ class MyLinkedListTest {
 				&& myLinkedList.tail.equals(myThirdNode);
 		assertTrue(result);
 	}
-	
+
+	@Ignore
 	@Test
 	public void given3NumbersWhenCallingSizeShouldPassLinkedListResult() {
 		MyNode<Integer> myFirstNode = new MyNode<>(56);
@@ -141,6 +143,24 @@ class MyLinkedListTest {
 		myLinkedList.append(myThirdNode);
 		myLinkedList.print();
 		assertEquals(3, myLinkedList.size());
+	}
+
+	@Test
+	public void given4NumbersWhenAddedOrderlyShouldPassLinkedListResult() {
+		MyNode<Integer> myFirstNode = new MyNode<>(56);
+		MyNode<Integer> mySecondNode = new MyNode<>(30);
+		MyNode<Integer> myThirdNode = new MyNode<>(40);
+		MyNode<Integer> myFourthNode = new MyNode<>(70);
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
+		myLinkedList.addSorted(myFirstNode);
+		myLinkedList.addSorted(mySecondNode);
+		myLinkedList.addSorted(myThirdNode);
+		myLinkedList.addSorted(myFourthNode);
+		myLinkedList.print();
+		assertEquals(mySecondNode, myLinkedList.head); // 30
+		assertEquals(myThirdNode, myLinkedList.head.getNext()); // 40
+		assertEquals(myFirstNode, myLinkedList.head.getNext().getNext()); // 56
+		assertEquals(myFourthNode, myLinkedList.tail); // 70
 	}
 
 }
